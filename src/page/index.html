@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AEB/ACER</title>
+        <link rel='stylesheet' href='../css/table.css' />
+  </head>
+    </head>
+    <body>
+        <section>
+            <h1>AEB/ACER sendbird Table</h1>
+            <div class="tbl-header">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Members</th>
+                        <th>Custom type</th>
+                        <!-- <th>Last message on</th> -->
+                    </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="tbl-content">
+                <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody id="tbodyInner">
+                    </tbody>
+                </table>
+            </div>
+            <span>William 提示: 默認數量為 10 / 項</span>
+            <br/>
+            <ul>
+                <li>
+                    <span>Custom type: </span><input id="testInput" type="text" /><br/>
+                    <span>Limit: </span><input id="number" type="number" /><br/>
+                </li>
+                <li>
+                    <button onclick="searchList()">Search</button>
+                    <button onclick="deleteList()" id="delete">DeleteAll</button>
+                </li>
+            </ul>
+        </section>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="../js/sendBirdAPI.js"></script>
+    </body>
+</html>
