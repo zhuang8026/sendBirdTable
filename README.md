@@ -10,3 +10,4 @@
 - 20210324 start demo
     - 20210325 add Custom type search - filter (AM)
     - 20210325 add environment change function (PM)
+        - 20210325 env alpha delete fixed

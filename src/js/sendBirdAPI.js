@@ -20,14 +20,8 @@ const envChange = (env) =>{
 const searchList = () => {
     let testInput =  document.getElementById("testInput").value;
     let num =  document.getElementById("number").value;
-    // let env =  document.getElementById("env").value;
     let selectValue = document.getElementById("select").value;
     envData = envChange(selectValue) ? envChange(selectValue): 'env';
-    console.log("input text:" , testInput);
-    console.log("input number:" , num);
-    // console.log("input env:" , env);
-    console.log('envData:', envData);
-    console.log('select:', selectValue);
 
     axios({
         method: "get",
@@ -44,7 +38,6 @@ const searchList = () => {
         }
         if(res.data.channels.length > 0){
             listdata.push(...res.data.channels);
-            console.log("searchListAPI:" , listdata);
             listdata.map((data, index) => {
                 trBody = document.createElement("tr");
                 td1 = document.createElement("td");
@@ -80,8 +73,6 @@ const deleteList = () => {
         let confirmBoolean = confirm(`Are you sure delete ${listdata.length} items?`);
 
         if (confirmBoolean) {
-            console.log("deleteList:" , listdata);
-            console.log("envData:" , envData);
             listdata.map((data, index)=>{
                 axios({
                     method: "delete",
@@ -93,7 +84,6 @@ const deleteList = () => {
                     },
                 })
                 .then((res) => {
-                    console.log("deleteList-res:" , res);
                     if(res.status == 200) {
                         console.log("success delete:" , data.name);
                         document.getElementById("tbodyInner").innerHTML="";
