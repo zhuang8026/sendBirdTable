@@ -1,21 +1,40 @@
 
-const Domain = "https://api-747C561B-9A50-4B8E-8EEF-38492D5F212D.sendbird.com/v3";
 let listdata=[];
 let trBody,td1,td2,td3,td4;
+
+const envChange = (env) =>{
+    let envList = {
+        dev: {
+            ApplicationID: '747C561B-9A50-4B8E-8EEF-38492D5F212D',
+            APIokens:'773a72b6e56af26b682b1a35b5c36d0e82e550f8',
+        },
+        alpha: {
+            ApplicationID: 'D91281B4-C59A-42E1-80F7-4117EF0071B4',
+            APIokens:'5f635cf19c6390c9bb53f0ba8ef4a58715c6c58a',
+        }
+    }
+    return envList[env];
+}
 
 /* Search */
 const searchList = () => {
     let testInput =  document.getElementById("testInput").value;
     let num =  document.getElementById("number").value;
+    // let env =  document.getElementById("env").value;
+    let selectValue = document.getElementById("select").value;
+    let envData = envChange(selectValue) ? envChange(selectValue): 'env';
     console.log("input text:" , testInput);
     console.log("input number:" , num);
+    // console.log("input env:" , env);
+    console.log('envData:', envData);
+    console.log('select:', selectValue);
 
     axios({
         method: "get",
-        url: `${Domain}/group_channels?custom_type=${testInput}&limit=${num?num:10}`,
+        url: `https://api-${envData.ApplicationID}.sendbird.com/v3/group_channels?custom_type=${testInput}&limit=${num?num:10}`,
         headers: {
             "Content-Type": "application/json; charset=utf8",
-            "Api-Token": "773a72b6e56af26b682b1a35b5c36d0e82e550f8",
+            "Api-Token": envData.APIokens,
         },
     })
     .then((res) => {
