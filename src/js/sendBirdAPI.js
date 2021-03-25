@@ -77,10 +77,17 @@ const deleteList = () => {
                 axios({
                     method: "delete",
                     // 1on1_ryanKuo_ryankuo05
-                    url: `https://api-${envData.ApplicationID}.sendbird.com/v3/group_channels/${data.channel_url}`,
+                    // url: `https://api-${envData.ApplicationID}.sendbird.com/v3/group_channels/${data.channel_url}`,
+                    // headers: {
+                    //     "Content-Type": "application/json; charset=utf8",
+                    //     "Api-Token": envData.APIokens,
+                    // },
+                    url: `https://cors-anywhere.herokuapp.com/https://gate.sendbird.com/platform/v3/group_channels/${data.channel_url}`,
                     headers: {
-                        "Content-Type": "application/json; charset=utf8",
-                        "Api-Token": envData.APIokens,
+                        "Content-Type": "application/json",
+                        "authorization": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMDA0MjgwMSIsImVtYWlsIjoiZHoyMC5lYkBnbWFpbC5jb20iLCJleHAiOjE2MTY3Mjk3ODEsInBhc3N3b3JkX3VwZGF0ZWRfYXQiOm51bGwsImVtYWlsX3VwZGF0ZWRfYXQiOm51bGwsIm9yZ2FuaXphdGlvbl9pZCI6NTAwMjYyNzgsIm9yZ2FuaXphdGlvbl9tZW1iZXJfaWQiOjUyNDAyLCJyb2xlX25hbWUiOiJPV05FUiIsInBlcm1pc3Npb25fa2V5cyI6WyJvcmdhbml6YXRpb24uZ2VuZXJhbC5hbGwiLCJvcmdhbml6YXRpb24uc2VjdXJpdHkuYWxsIiwib3JnYW5pemF0aW9uLm1lbWJlcnMuYWxsIiwib3JnYW5pemF0aW9uLnJvbGVzLmFsbCIsIm9yZ2FuaXphdGlvbi5hcHBsaWNhdGlvbnMuYWxsIiwib3JnYW5pemF0aW9uLmJpbGxpbmcuYWxsIiwib3JnYW5pemF0aW9uLnVzYWdlLmFsbCIsImFwcGxpY2F0aW9uLm92ZXJ2aWV3LnZpZXciLCJhcHBsaWNhdGlvbi5jaGFubmVscy5vcGVuQ2hhbm5lbC5hbGwiLCJhcHBsaWNhdGlvbi5jaGFubmVscy5ncm91cENoYW5uZWwuYWxsIiwiYXBwbGljYXRpb24uYW5ub3VuY2VtZW50cy5hbGwiLCJhcHBsaWNhdGlvbi5kYXRhRXhwb3J0LmFsbCIsImFwcGxpY2F0aW9uLm1lc3NhZ2VTZWFyY2guYWxsIiwiYXBwbGljYXRpb24udXNlcnMuYWxsIiwiYXBwbGljYXRpb24uYW5hbHl0aWNzLnZpZXciLCJhcHBsaWNhdGlvbi5zZXR0aW5ncy5hbGwiLCJkZXNrLmFkbWluIiwiY2FsbHMuc3R1ZGlvLmFsbCIsInN1cHBvcnQudGVjaG5pY2FsIl0sImFjY2Vzc19jb250cm9sbGVkX2FwcGxpY2F0aW9uX2lkcyI6W10sImlhdCI6MTYxNjY0MzM4MX0.r7-mzhSFlLoeEgccVdMZdERFJ9wPL-TN3YuMNJ4LOi8",
+                        //authorization可能每次都需更換(sendbird內按search即可找到)
+                        "app-id": envData.ApplicationID
                     },
                 })
                 .then((res) => {
