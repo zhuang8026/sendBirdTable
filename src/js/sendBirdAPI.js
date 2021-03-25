@@ -1,6 +1,6 @@
 
 let listdata=[];
-let trBody,td1,td2,td3,td4;
+let trBody,td1,td2,td3,td4,envData;
 
 const envChange = (env) =>{
     let envList = {
@@ -22,7 +22,7 @@ const searchList = () => {
     let num =  document.getElementById("number").value;
     // let env =  document.getElementById("env").value;
     let selectValue = document.getElementById("select").value;
-    let envData = envChange(selectValue) ? envChange(selectValue): 'env';
+    envData = envChange(selectValue) ? envChange(selectValue): 'env';
     console.log("input text:" , testInput);
     console.log("input number:" , num);
     // console.log("input env:" , env);
@@ -80,17 +80,20 @@ const deleteList = () => {
         let confirmBoolean = confirm(`Are you sure delete ${listdata.length} items?`);
 
         if (confirmBoolean) {
-            // console.log("searchListAPI:" , listdata);
+            console.log("deleteList:" , listdata);
+            console.log("envData:" , envData);
             listdata.map((data, index)=>{
                 axios({
                     method: "delete",
-                    url: `${Domain}/group_channels/${data.name}`,
+                    // 1on1_ryanKuo_ryankuo05
+                    url: `https://api-${envData.ApplicationID}.sendbird.com/v3/group_channels/${data.channel_url}`,
                     headers: {
                         "Content-Type": "application/json; charset=utf8",
-                        "Api-Token": "773a72b6e56af26b682b1a35b5c36d0e82e550f8",
+                        "Api-Token": envData.APIokens,
                     },
                 })
                 .then((res) => {
+                    console.log("deleteList-res:" , res);
                     if(res.status == 200) {
                         console.log("success delete:" , data.name);
                         document.getElementById("tbodyInner").innerHTML="";
