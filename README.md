@@ -1,4 +1,4 @@
-## EXPERIENCE SHARING PLATFORM
+## SENDBIRD TABLE
 
 ### `- 技術支持 -`
 
